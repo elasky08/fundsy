@@ -1,0 +1,20 @@
+<div style="width: 800px;">
+  <div id="map" style="width: 800px; height: 400px;"></div>
+</div>
+
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%= raw @markers.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+
+  <% unless params[:lat] %>
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var latitude  = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        window.location = "<%= campaigns_path %>?lat=" + latitude + "&lng=" + longitude;
+    });
+  <% end %>
+</script>

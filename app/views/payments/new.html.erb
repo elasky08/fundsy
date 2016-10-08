@@ -1,0 +1,34 @@
+<h1>Pay for your pledge(<%= number_to_currency(@pledge.amount) %>)</h1>
+
+<%= form_tag pledge_payments_path(@pledge), id: "server-form" do %>
+  <%= hidden_field_tag :stripe_token %>
+<% end %>
+
+<%= form_tag '', id: 'payment-form' do %>
+<div class="payment-errors"></div>
+  <div class="form-group">
+    <%= label_tag :card_number %>
+    <%= text_field_tag :card_number, '', { class: 'form-control',
+                                           data: {stripe: 'number' }} %>
+  </div>
+
+  <div class="form-group">
+    <label>
+      <span>Expiration (MM/YY)</span>
+      <!-- <input type="text" size="2" data-stripe="exp_month"> below is ruby erb equivalent-->
+      <%= text_field_tag :exp_month, '', { size:  2,
+                                           data: {stripe: 'exp_month' }} %>
+    </label>
+    <span> / </span>
+    <!-- <input type="text" size="2" data-stripe="exp_year"> below is ruby erb equivalent-->
+    <%= text_field_tag :exp_year, '', { size:  2,
+                                        data: {stripe: 'exp_year' }} %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :cvc %>
+    <%= text_field_tag :cvc, '', { size: 4,
+                                   data: {stripe: 'cvc'}} %>
+  </div>
+  <%= submit_tag "Make the Payment", class: "btn btn-primary" %>
+
+<% end %>

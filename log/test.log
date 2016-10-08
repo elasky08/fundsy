@@ -1,0 +1,1834 @@
+  [1m[35m (125.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "fundsy_test"[0m
+  [1m[35m (396.6ms)[0m  [1m[35mCREATE DATABASE "fundsy_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (25.4ms)[0m  [1m[35mCREATE TABLE "campaigns" ("id" serial primary key, "title" character varying, "description" text, "goal" integer, "end_date" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20160812185014')[0m
+  [1m[35m (46.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", 2016-08-12 19:05:06 UTC], ["updated_at", 2016-08-12 19:05:06 UTC]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (19.7ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-11 19:20:33 UTC], ["created_at", 2016-08-12 19:20:33 UTC], ["updated_at", 2016-08-12 19:20:33 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (8.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-11 19:22:22 UTC], ["created_at", 2016-08-12 19:22:22 UTC], ["updated_at", 2016-08-12 19:22:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (7.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-11 19:29:05 UTC], ["created_at", 2016-08-12 19:29:05 UTC], ["updated_at", 2016-08-12 19:29:05 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-11 19:29:41 UTC], ["created_at", 2016-08-12 19:29:41 UTC], ["updated_at", 2016-08-12 19:29:41 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (6.0ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-11 19:30:17 UTC], ["created_at", 2016-08-12 19:30:17 UTC], ["updated_at", 2016-08-12 19:30:17 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (12.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (12.7ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (12.0ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-15 16:21:39 UTC], ["created_at", 2016-08-16 16:21:39 UTC], ["updated_at", 2016-08-16 16:21:39 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+Completed 406 Not Acceptable in 62ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 16ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 10.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 15ms (Views: 11.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 11.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 30ms (Views: 12.3ms | ActiveRecord: 4.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 09:55:38 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+No template found for CampaignsController#create, rendering head :no_content
+Completed 204 No Content in 66ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 09:57:40 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (7.1ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 16:57:40 UTC], ["created_at", 2016-08-16 16:57:40 UTC], ["updated_at", 2016-08-16 16:57:40 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+No template found for CampaignsController#create, rendering head :no_content
+Completed 204 No Content in 92ms (ActiveRecord: 11.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 31ms (Views: 13.7ms | ActiveRecord: 4.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 31ms (Views: 12.4ms | ActiveRecord: 3.7ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 31ms (Views: 14.5ms | ActiveRecord: 3.7ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 10:29:08 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 17:29:08 UTC], ["created_at", 2016-08-16 17:29:08 UTC], ["updated_at", 2016-08-16 17:29:08 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+No template found for CampaignsController#create, rendering head :no_content
+Completed 204 No Content in 102ms (ActiveRecord: 6.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 10:29:48 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 17:29:48 UTC], ["created_at", 2016-08-16 17:29:48 UTC], ["updated_at", 2016-08-16 17:29:48 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+No template found for CampaignsController#create, rendering head :no_content
+Completed 204 No Content in 101ms (ActiveRecord: 11.8ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 10:31:58 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (6.8ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 17:31:58 UTC], ["created_at", 2016-08-16 17:31:58 UTC], ["updated_at", 2016-08-16 17:31:58 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+No template found for CampaignsController#create, rendering head :no_content
+Completed 204 No Content in 107ms (ActiveRecord: 12.0ms)
+  [1m[36mCampaign Load (0.5ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" ORDER BY "campaigns"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 10:33:25 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (7.6ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 17:33:25 UTC], ["created_at", 2016-08-16 17:33:25 UTC], ["updated_at", 2016-08-16 17:33:25 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/11
+Completed 302 Found in 54ms (ActiveRecord: 12.9ms)
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" ORDER BY "campaigns"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 10:38:09 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (7.2ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 17:38:09 UTC], ["created_at", 2016-08-16 17:38:09 UTC], ["updated_at", 2016-08-16 17:38:09 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/12
+Completed 302 Found in 52ms (ActiveRecord: 12.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 10:39:03 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (7.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 17:39:03 UTC], ["created_at", 2016-08-16 17:39:03 UTC], ["updated_at", 2016-08-16 17:39:03 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/13
+Completed 302 Found in 55ms (ActiveRecord: 12.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 26ms (Views: 10.6ms | ActiveRecord: 4.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 10:39:43 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 17:39:43 UTC], ["created_at", 2016-08-16 17:39:43 UTC], ["updated_at", 2016-08-16 17:39:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/14
+Completed 302 Found in 21ms (ActiveRecord: 1.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 10:39:43 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 17:39:43 UTC], ["created_at", 2016-08-16 17:39:43 UTC], ["updated_at", 2016-08-16 17:39:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/15
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" ORDER BY "campaigns"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 10:39:43 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 17:39:43 UTC], ["created_at", 2016-08-16 17:39:43 UTC], ["updated_at", 2016-08-16 17:39:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/16
+Completed 302 Found in 5ms (ActiveRecord: 1.0ms)
+  [1m[35m (5.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-15 17:39:43 UTC], ["created_at", 2016-08-16 17:39:43 UTC], ["updated_at", 2016-08-16 17:39:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (5.7ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 10.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 58ms (Views: 14.3ms | ActiveRecord: 5.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 52ms (Views: 13.2ms | ActiveRecord: 3.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (7.8ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", ""], ["created_at", 2016-08-16 18:01:52 UTC], ["updated_at", 2016-08-16 18:01:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/18
+Completed 302 Found in 28ms (ActiveRecord: 10.6ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 49ms (Views: 13.4ms | ActiveRecord: 3.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 27ms (Views: 10.9ms | ActiveRecord: 3.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:02:50 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (6.7ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:02:50 UTC], ["created_at", 2016-08-16 18:02:50 UTC], ["updated_at", 2016-08-16 18:02:50 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/19
+Completed 302 Found in 31ms (ActiveRecord: 7.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:02:50 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:02:50 UTC], ["created_at", 2016-08-16 18:02:50 UTC], ["updated_at", 2016-08-16 18:02:50 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/20
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" ORDER BY "campaigns"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:02:50 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:02:50 UTC], ["created_at", 2016-08-16 18:02:50 UTC], ["updated_at", 2016-08-16 18:02:50 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/21
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-15 18:02:50 UTC], ["created_at", 2016-08-16 18:02:50 UTC], ["updated_at", 2016-08-16 18:02:50 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (7.2ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "orchestrate cross-platform deliverables1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "orchestrate cross-platform deliverables1"], ["description", "The only pattern Chuck Norris knows is God Object."], ["goal", 13631], ["end_date", 2016-10-15 18:46:37 UTC], ["created_at", 2016-08-16 18:46:37 UTC], ["updated_at", 2016-08-16 18:46:37 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#show as HTML
+  Parameters: {"id"=>"23"}
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "extend 24/365 models1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "extend 24/365 models1"], ["description", "The programs that Chuck Norris writes don't have version numbers because he only writes them once. If a user reports a bug or has a feature request they don't live to see the sun set."], ["goal", 46854], ["end_date", 2016-10-15 18:47:22 UTC], ["created_at", 2016-08-16 18:47:22 UTC], ["updated_at", 2016-08-16 18:47:22 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#show as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 18ms (Views: 11.5ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 26ms (Views: 9.5ms | ActiveRecord: 4.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:47:27 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:47:27 UTC], ["created_at", 2016-08-16 18:47:27 UTC], ["updated_at", 2016-08-16 18:47:27 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/25
+Completed 302 Found in 21ms (ActiveRecord: 1.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:47:28 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:47:28 UTC], ["created_at", 2016-08-16 18:47:28 UTC], ["updated_at", 2016-08-16 18:47:28 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/26
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" ORDER BY "campaigns"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:47:28 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:47:28 UTC], ["created_at", 2016-08-16 18:47:28 UTC], ["updated_at", 2016-08-16 18:47:28 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/27
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 532ms (Views: 0.8ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "reintermediate mission-critical functionalities1"], ["LIMIT", 1]]
+  [1m[35mSQL (5.6ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "reintermediate mission-critical functionalities1"], ["description", "When Chuck Norris presses Ctrl+Alt+Delete, worldwide computer restart is initiated."], ["goal", 2001], ["end_date", 2016-10-15 18:47:28 UTC], ["created_at", 2016-08-16 18:47:28 UTC], ["updated_at", 2016-08-16 18:47:28 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#show as HTML
+  Parameters: {"id"=>"28"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "synergize bleeding-edge bandwidth2"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "synergize bleeding-edge bandwidth2"], ["description", "Chuck Norris can write multi-threaded applications with a single thread."], ["goal", 44592], ["end_date", 2016-10-15 18:47:28 UTC], ["created_at", 2016-08-16 18:47:28 UTC], ["updated_at", 2016-08-16 18:47:28 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-15 18:47:28 UTC], ["created_at", 2016-08-16 18:47:28 UTC], ["updated_at", 2016-08-16 18:47:28 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#index as HTML
+Completed 406 Not Acceptable in 70ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#index as HTML
+  Rendering campaigns/index.html.erb within layouts/application
+  Rendered campaigns/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "syndicate proactive e-markets1"], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "syndicate proactive e-markets1"], ["description", "Chuck Norris' beard is immutable."], ["goal", 51671], ["end_date", 2016-10-15 18:55:58 UTC], ["created_at", 2016-08-16 18:55:58 UTC], ["updated_at", 2016-08-16 18:55:58 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "repurpose real-time interfaces2"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "repurpose real-time interfaces2"], ["description", "Chuck Norris never gets a syntax error. Instead, the language gets a DoesNotConformToChuck error."], ["goal", 88223], ["end_date", 2016-10-15 18:55:58 UTC], ["created_at", 2016-08-16 18:55:58 UTC], ["updated_at", 2016-08-16 18:55:58 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#index as HTML
+  Rendering campaigns/index.html.erb within layouts/application
+  Rendered campaigns/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 15ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "cultivate rich portals1"], ["LIMIT", 1]]
+  [1m[35mSQL (6.1ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "cultivate rich portals1"], ["description", "Chuck Norris' addition operator doesn't commute; it teleports to where he needs it to be."], ["goal", 37884], ["end_date", 2016-10-15 18:56:58 UTC], ["created_at", 2016-08-16 18:56:58 UTC], ["updated_at", 2016-08-16 18:56:58 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "streamline granular e-tailers2"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "streamline granular e-tailers2"], ["description", "Chuck Norris knows the last digit of PI."], ["goal", 15694], ["end_date", 2016-10-15 18:56:58 UTC], ["created_at", 2016-08-16 18:56:58 UTC], ["updated_at", 2016-08-16 18:56:58 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#index as HTML
+  Rendering campaigns/index.html.erb within layouts/application
+  Rendered campaigns/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 16ms (Views: 13.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "monetize holistic bandwidth1"], ["LIMIT", 1]]
+  [1m[35mSQL (5.9ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "monetize holistic bandwidth1"], ["description", "Chuck Norris's keyboard doesn't have a Ctrl key because nothing controls Chuck Norris."], ["goal", 24611], ["end_date", 2016-10-15 18:58:28 UTC], ["created_at", 2016-08-16 18:58:28 UTC], ["updated_at", 2016-08-16 18:58:28 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "generate virtual interfaces2"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "generate virtual interfaces2"], ["description", "Quantum cryptography does not work on Chuck Norris. When something is being observed by Chuck it stays in the same state until he's finished. "], ["goal", 45680], ["end_date", 2016-10-15 18:58:28 UTC], ["created_at", 2016-08-16 18:58:28 UTC], ["updated_at", 2016-08-16 18:58:28 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#index as HTML
+  Rendering campaigns/index.html.erb within layouts/application
+  Rendered campaigns/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 16ms (Views: 12.4ms | ActiveRecord: 0.0ms)
+  [1m[36mCampaign Load (19.5ms)[0m  [1m[34mSELECT "campaigns".* FROM "campaigns" ORDER BY "campaigns"."created_at" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 29ms (Views: 11.5ms | ActiveRecord: 5.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:58:36 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:58:36 UTC], ["created_at", 2016-08-16 18:58:36 UTC], ["updated_at", 2016-08-16 18:58:36 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/37
+Completed 302 Found in 23ms (ActiveRecord: 1.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:58:36 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:58:36 UTC], ["created_at", 2016-08-16 18:58:36 UTC], ["updated_at", 2016-08-16 18:58:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/38
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" ORDER BY "campaigns"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:58:36 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:58:36 UTC], ["created_at", 2016-08-16 18:58:36 UTC], ["updated_at", 2016-08-16 18:58:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/39
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 571ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "scale interactive e-markets1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "scale interactive e-markets1"], ["description", "\"It works on my machine\" always holds true for Chuck Norris."], ["goal", 73300], ["end_date", 2016-10-15 18:58:36 UTC], ["created_at", 2016-08-16 18:58:36 UTC], ["updated_at", 2016-08-16 18:58:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#show as HTML
+  Parameters: {"id"=>"40"}
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "brand dot-com convergence2"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "brand dot-com convergence2"], ["description", "Chuck Norris doesn't need garbage collection because he doesn't call .Dispose(), he calls .DropKick()."], ["goal", 85548], ["end_date", 2016-10-15 18:58:36 UTC], ["created_at", 2016-08-16 18:58:36 UTC], ["updated_at", 2016-08-16 18:58:36 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#show as HTML
+  Parameters: {"id"=>"41"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#index as HTML
+  Rendering campaigns/index.html.erb within layouts/application
+  Rendered campaigns/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "e-enable innovative interfaces3"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "e-enable innovative interfaces3"], ["description", "Chuck Norris burst the dot com bubble."], ["goal", 62341], ["end_date", 2016-10-15 18:58:36 UTC], ["created_at", 2016-08-16 18:58:36 UTC], ["updated_at", 2016-08-16 18:58:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "deliver dynamic technologies4"], ["LIMIT", 1]]
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "deliver dynamic technologies4"], ["description", "You don't disable the Chuck Norris plug-in, it disables you."], ["goal", 47250], ["end_date", 2016-10-15 18:58:36 UTC], ["created_at", 2016-08-16 18:58:36 UTC], ["updated_at", 2016-08-16 18:58:36 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#index as HTML
+  Rendering campaigns/index.html.erb within layouts/application
+  Rendered campaigns/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+  [1m[36mCampaign Load (0.6ms)[0m  [1m[34mSELECT "campaigns".* FROM "campaigns" ORDER BY "campaigns"."created_at" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-15 18:58:36 UTC], ["created_at", 2016-08-16 18:58:36 UTC], ["updated_at", 2016-08-16 18:58:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 27ms (Views: 11.2ms | ActiveRecord: 3.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:59:49 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (5.8ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:59:49 UTC], ["created_at", 2016-08-16 18:59:49 UTC], ["updated_at", 2016-08-16 18:59:49 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/45
+Completed 302 Found in 30ms (ActiveRecord: 6.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:59:49 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:59:49 UTC], ["created_at", 2016-08-16 18:59:49 UTC], ["updated_at", 2016-08-16 18:59:49 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/46
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" ORDER BY "campaigns"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-05 11:59:49 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-05 18:59:49 UTC], ["created_at", 2016-08-16 18:59:49 UTC], ["updated_at", 2016-08-16 18:59:49 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/47
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 572ms (Views: 0.7ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "facilitate e-business e-commerce1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "facilitate e-business e-commerce1"], ["description", "Chuck Norris' addition operator doesn't commute; it teleports to where he needs it to be."], ["goal", 53498], ["end_date", 2016-10-15 18:59:49 UTC], ["created_at", 2016-08-16 18:59:49 UTC], ["updated_at", 2016-08-16 18:59:49 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#show as HTML
+  Parameters: {"id"=>"48"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 48], ["LIMIT", 1]]
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "embrace innovative web-readiness2"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "embrace innovative web-readiness2"], ["description", "Chuck Norris knows the last digit of PI."], ["goal", 11190], ["end_date", 2016-10-15 18:59:49 UTC], ["created_at", 2016-08-16 18:59:49 UTC], ["updated_at", 2016-08-16 18:59:49 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#show as HTML
+  Parameters: {"id"=>"49"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 49], ["LIMIT", 1]]
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#index as HTML
+  Rendering campaigns/index.html.erb within layouts/application
+  Rendered campaigns/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "e-enable efficient experiences3"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "e-enable efficient experiences3"], ["description", "Chuck Norris hosting is 101% uptime guaranteed."], ["goal", 38260], ["end_date", 2016-10-15 18:59:49 UTC], ["created_at", 2016-08-16 18:59:49 UTC], ["updated_at", 2016-08-16 18:59:49 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "empower granular architectures4"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "empower granular architectures4"], ["description", "No statement can catch the ChuckNorrisException."], ["goal", 9334], ["end_date", 2016-10-15 18:59:49 UTC], ["created_at", 2016-08-16 18:59:49 UTC], ["updated_at", 2016-08-16 18:59:49 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#index as HTML
+  Rendering campaigns/index.html.erb within layouts/application
+  Rendered campaigns/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+  [1m[36mCampaign Load (0.7ms)[0m  [1m[34mSELECT "campaigns".* FROM "campaigns" ORDER BY "campaigns"."created_at" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-15 18:59:49 UTC], ["created_at", 2016-08-16 18:59:49 UTC], ["updated_at", 2016-08-16 18:59:49 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (7.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "grow scalable content1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "grow scalable content1"], ["description", "When Chuck Norris points to null, null quakes in fear."], ["goal", 33188], ["end_date", 2016-10-22 16:35:03 UTC], ["created_at", 2016-08-23 16:35:03 UTC], ["updated_at", 2016-08-23 16:35:03 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#destroy as HTML
+  Parameters: {"id"=>"53"}
+No template found for CampaignsController#destroy, rendering head :no_content
+Completed 204 No Content in 60ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "architect virtual portals1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "architect virtual portals1"], ["description", "Chuck Norris can spawn threads that complete before they are started."], ["goal", 75782], ["end_date", 2016-10-22 16:36:43 UTC], ["created_at", 2016-08-23 16:36:43 UTC], ["updated_at", 2016-08-23 16:36:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#destroy as HTML
+  Parameters: {"id"=>"54"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "campaigns" WHERE "campaigns"."id" = $1[0m  [["id", 54]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+No template found for CampaignsController#destroy, rendering head :no_content
+Completed 204 No Content in 65ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "target enterprise convergence1"], ["LIMIT", 1]]
+  [1m[35mSQL (5.8ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "target enterprise convergence1"], ["description", "Chuck Norris programs do not accept input."], ["goal", 51906], ["end_date", 2016-10-22 16:45:52 UTC], ["created_at", 2016-08-23 16:45:52 UTC], ["updated_at", 2016-08-23 16:45:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#destroy as HTML
+  Parameters: {"id"=>"55"}
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "campaigns" WHERE "campaigns"."id" = $1[0m  [["id", 55]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+No template found for CampaignsController#destroy, rendering head :no_content
+Completed 204 No Content in 62ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "recontextualize value-added e-services1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "recontextualize value-added e-services1"], ["description", "Chuck Norris doesn't need a debugger, he just stares down the bug until the code confesses."], ["goal", 26655], ["end_date", 2016-10-22 16:47:31 UTC], ["created_at", 2016-08-23 16:47:31 UTC], ["updated_at", 2016-08-23 16:47:31 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#destroy as HTML
+  Parameters: {"id"=>"56"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "campaigns" WHERE "campaigns"."id" = $1[0m  [["id", 56]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns
+Completed 302 Found in 10ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (18.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (132.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "fundsy_test"[0m
+  [1m[35m (400.1ms)[0m  [1m[35mCREATE DATABASE "fundsy_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "campaigns" ("id" serial primary key, "title" character varying, "description" text, "goal" integer, "end_date" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20160823165025')[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160812185014');
+
+[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", 2016-08-23 17:08:33 UTC], ["updated_at", 2016-08-23 17:08:33 UTC]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (6.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (7.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tad-1@mcdermottlarson.io"], ["LIMIT", 1]]
+  [1m[35mSQL (13.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Daniella"], ["last_name", "Lakin"], ["email", "tad-1@mcdermottlarson.io"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 17:31:27 UTC], ["updated_at", 2016-08-23 17:31:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tad-1@mcdermottlarson.io"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "brooke.strosin-1@zieme.name"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "josefina-1@bartolettifahey.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (136.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "fundsy_test"[0m
+  [1m[35m (426.9ms)[0m  [1m[35mCREATE DATABASE "fundsy_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE TABLE "campaigns" ("id" serial primary key, "title" character varying, "description" text, "goal" integer, "end_date" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20160823165025')[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160812185014');
+
+[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", 2016-08-23 17:53:46 UTC], ["updated_at", 2016-08-23 17:53:46 UTC]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (119.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "fundsy_test"[0m
+  [1m[35m (453.2ms)[0m  [1m[35mCREATE DATABASE "fundsy_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "campaigns" ("id" serial primary key, "title" character varying, "description" text, "goal" integer, "end_date" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "pledges" ("id" serial primary key, "amount" integer, "user_id" integer, "campaign_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_pledges_on_campaign_id" ON "pledges" USING btree ("campaign_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_pledges_on_user_id" ON "pledges" USING btree ("user_id")[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mALTER TABLE "pledges" ADD CONSTRAINT "fk_rails_48018eb93e"
+FOREIGN KEY ("campaign_id")
+  REFERENCES "campaigns" ("id")
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "pledges" ADD CONSTRAINT "fk_rails_fab7fc217d"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20160823173945')[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160812185014'), ('20160823165025');
+
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", 2016-08-23 17:54:14 UTC], ["updated_at", 2016-08-23 17:54:14 UTC]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "harness global synergies1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "harness global synergies1"], ["description", "Chuck Norris doesn't need a debugger, he just stares down the bug until the code confesses."], ["goal", 16548], ["end_date", 2016-10-22 17:54:14 UTC], ["created_at", 2016-08-23 17:54:14 UTC], ["updated_at", 2016-08-23 17:54:14 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "enable holistic vortals1"], ["LIMIT", 1]]
+  [1m[35mSQL (7.0ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "enable holistic vortals1"], ["description", "Chuck Norris doesn't get compiler errors, the language changes itself to accommodate Chuck Norris."], ["goal", 1913], ["end_date", 2016-10-22 17:55:35 UTC], ["created_at", 2016-08-23 17:55:35 UTC], ["updated_at", 2016-08-23 17:55:35 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"amount"=>"10", "campaign_id"=>"2"}
+No template found for PledgesController#create, rendering head :no_content
+Completed 204 No Content in 65ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "visualize global functionalities1"], ["LIMIT", 1]]
+  [1m[35mSQL (6.8ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "visualize global functionalities1"], ["description", "Chuck Norris does not use exceptions when programming. He has not been able to identify any of his code that is not exceptional."], ["goal", 35387], ["end_date", 2016-10-22 18:00:38 UTC], ["created_at", 2016-08-23 18:00:38 UTC], ["updated_at", 2016-08-23 18:00:38 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"amount"=>"10", "campaign_id"=>"3"}
+Redirected to http://test.host/
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (6.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "javier.bruen-1@wiegand.name"], ["LIMIT", 1]]
+  [1m[35mSQL (6.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Estevan"], ["last_name", "Kuhn"], ["email", "javier.bruen-1@wiegand.name"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:12:34 UTC], ["updated_at", 2016-08-23 18:12:34 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "redefine distributed synergies1"], ["LIMIT", 1]]
+  [1m[35mSQL (5.7ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "redefine distributed synergies1"], ["description", "Chuck Norris can binary search unsorted data."], ["goal", 56555], ["end_date", 2016-10-22 18:12:34 UTC], ["created_at", 2016-08-23 18:12:34 UTC], ["updated_at", 2016-08-23 18:12:34 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"amount"=>"20", "campaign_id"=>"4"}
+No template found for PledgesController#create, rendering head :no_content
+Completed 204 No Content in 59ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "verdie-1@casperjast.net"], ["LIMIT", 1]]
+  [1m[35mSQL (6.1ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Colleen"], ["last_name", "Reichert"], ["email", "verdie-1@casperjast.net"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:14:07 UTC], ["updated_at", 2016-08-23 18:14:07 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "innovate holistic convergence1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "innovate holistic convergence1"], ["description", "Chuck Norris doesn't need an OS."], ["goal", 40558], ["end_date", 2016-10-22 18:14:07 UTC], ["created_at", 2016-08-23 18:14:07 UTC], ["updated_at", 2016-08-23 18:14:07 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"amount"=>"20", "campaign_id"=>"5"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kamren.armstrong-1@stehrspinka.net"], ["LIMIT", 1]]
+  [1m[35mSQL (6.9ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Destiney"], ["last_name", "Barton"], ["email", "kamren.armstrong-1@stehrspinka.net"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:16:08 UTC], ["updated_at", 2016-08-23 18:16:08 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "synthesize sexy web-readiness1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "synthesize sexy web-readiness1"], ["description", "Chuck Norris doesn't use web standards as the web will conform to him."], ["goal", 25173], ["end_date", 2016-10-22 18:16:08 UTC], ["created_at", 2016-08-23 18:16:08 UTC], ["updated_at", 2016-08-23 18:16:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"6"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (6.5ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+No template found for PledgesController#create, rendering head :no_content
+Completed 204 No Content in 85ms (ActiveRecord: 8.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jaylin.jacobs-1@medhurst.io"], ["LIMIT", 1]]
+  [1m[35mSQL (6.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Ben"], ["last_name", "Greenholt"], ["email", "jaylin.jacobs-1@medhurst.io"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:16:57 UTC], ["updated_at", 2016-08-23 18:16:57 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "monetize compelling niches1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "monetize compelling niches1"], ["description", "The only pattern Chuck Norris knows is God Object."], ["goal", 75124], ["end_date", 2016-10-22 18:16:57 UTC], ["created_at", 2016-08-23 18:16:57 UTC], ["updated_at", 2016-08-23 18:16:57 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"7"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (12.7ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["amount", 20], ["created_at", 2016-08-23 18:16:57 UTC], ["updated_at", 2016-08-23 18:16:57 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+No template found for PledgesController#create, rendering head :no_content
+Completed 204 No Content in 79ms (ActiveRecord: 14.4ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joanne-1@torpkautzer.net"], ["LIMIT", 1]]
+  [1m[35mSQL (6.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Elena"], ["last_name", "Kiehn"], ["email", "joanne-1@torpkautzer.net"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:20:52 UTC], ["updated_at", 2016-08-23 18:20:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "seize interactive functionalities1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "seize interactive functionalities1"], ["description", "Chuck Norris breaks RSA 128-bit encrypted codes in milliseconds."], ["goal", 27571], ["end_date", 2016-10-22 18:20:52 UTC], ["created_at", 2016-08-23 18:20:52 UTC], ["updated_at", 2016-08-23 18:20:52 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"8"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (5.8ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["amount", 20], ["created_at", 2016-08-23 18:20:52 UTC], ["updated_at", 2016-08-23 18:20:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/8
+Completed 302 Found in 21ms (ActiveRecord: 7.4ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "nedra-1@graham.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Zane"], ["last_name", "Heidenreich"], ["email", "nedra-1@graham.com"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:21:08 UTC], ["updated_at", 2016-08-23 18:21:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "drive dot-com e-services1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "drive dot-com e-services1"], ["description", "Chuck Norris can binary search unsorted data."], ["goal", 37193], ["end_date", 2016-10-22 18:21:08 UTC], ["created_at", 2016-08-23 18:21:08 UTC], ["updated_at", 2016-08-23 18:21:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"9"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["amount", 20], ["created_at", 2016-08-23 18:21:08 UTC], ["updated_at", 2016-08-23 18:21:08 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/9
+Completed 302 Found in 17ms (ActiveRecord: 3.3ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "maya.lueilwitz-1@brownhowell.net"], ["LIMIT", 1]]
+  [1m[35mSQL (6.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Kara"], ["last_name", "Hills"], ["email", "maya.lueilwitz-1@brownhowell.net"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:27:09 UTC], ["updated_at", 2016-08-23 18:27:09 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "incentivize real-time content1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "incentivize real-time content1"], ["description", "Chuck Norris can't test for equality because he has no equal."], ["goal", 52687], ["end_date", 2016-10-22 18:27:09 UTC], ["created_at", 2016-08-23 18:27:09 UTC], ["updated_at", 2016-08-23 18:27:09 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"10"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["amount", 20], ["created_at", 2016-08-23 18:27:09 UTC], ["updated_at", 2016-08-23 18:27:09 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/10
+Completed 302 Found in 16ms (ActiveRecord: 3.3ms)
+  [1m[36mPledge Load (0.3ms)[0m  [1m[34mSELECT  "pledges".* FROM "pledges" ORDER BY "pledges"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dorcas_rippin-1@hilll.com"], ["LIMIT", 1]]
+  [1m[35mSQL (7.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Aric"], ["last_name", "Leannon"], ["email", "dorcas_rippin-1@hilll.com"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:27:59 UTC], ["updated_at", 2016-08-23 18:27:59 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "expedite extensible systems1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "expedite extensible systems1"], ["description", "Chuck Norris doesn't believe in floating point numbers because they can't be typed on his binary keyboard."], ["goal", 70353], ["end_date", 2016-10-22 18:27:59 UTC], ["created_at", 2016-08-23 18:27:59 UTC], ["updated_at", 2016-08-23 18:27:59 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"11"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/11
+Completed 302 Found in 29ms (ActiveRecord: 2.6ms)
+  [1m[36mPledge Load (0.4ms)[0m  [1m[34mSELECT  "pledges".* FROM "pledges" ORDER BY "pledges"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "raphael-1@mooreroberts.co"], ["LIMIT", 1]]
+  [1m[35mSQL (12.6ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Cortez"], ["last_name", "Rath"], ["email", "raphael-1@mooreroberts.co"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:30:39 UTC], ["updated_at", 2016-08-23 18:30:39 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "engage virtual technologies1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "engage virtual technologies1"], ["description", "The only pattern Chuck Norris knows is God Object."], ["goal", 44958], ["end_date", 2016-10-22 18:30:39 UTC], ["created_at", 2016-08-23 18:30:39 UTC], ["updated_at", 2016-08-23 18:30:39 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/12
+Completed 302 Found in 33ms (ActiveRecord: 3.3ms)
+  [1m[36mPledge Load (0.4ms)[0m  [1m[34mSELECT  "pledges".* FROM "pledges" ORDER BY "pledges"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guillermo.reichel-1@morar.net"], ["LIMIT", 1]]
+  [1m[35mSQL (7.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Loy"], ["last_name", "Greenholt"], ["email", "guillermo.reichel-1@morar.net"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:33:18 UTC], ["updated_at", 2016-08-23 18:33:18 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "integrate strategic web services1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "integrate strategic web services1"], ["description", "Chuck Norris solved the Travelling Salesman problem in O(1) time."], ["goal", 43874], ["end_date", 2016-10-22 18:33:18 UTC], ["created_at", 2016-08-23 18:33:18 UTC], ["updated_at", 2016-08-23 18:33:18 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"13"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/13
+Completed 302 Found in 35ms (ActiveRecord: 3.2ms)
+  [1m[36mPledge Load (0.4ms)[0m  [1m[34mSELECT  "pledges".* FROM "pledges" ORDER BY "pledges"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hannah-1@hahn.info"], ["LIMIT", 1]]
+  [1m[35mSQL (6.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Jarrett"], ["last_name", "Rolfson"], ["email", "hannah-1@hahn.info"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:35:42 UTC], ["updated_at", 2016-08-23 18:35:42 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "iterate strategic supply-chains1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "iterate strategic supply-chains1"], ["description", "Chuck Norris' programs occupy 150% of CPU, even when they are not executing."], ["goal", 24165], ["end_date", 2016-10-22 18:35:42 UTC], ["created_at", 2016-08-23 18:35:42 UTC], ["updated_at", 2016-08-23 18:35:42 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"14"}
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (19.3ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 20], ["user_id", 11], ["campaign_id", 14], ["created_at", 2016-08-23 18:35:42 UTC], ["updated_at", 2016-08-23 18:35:42 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/14
+Completed 302 Found in 52ms (ActiveRecord: 22.6ms)
+  [1m[36mPledge Load (0.3ms)[0m  [1m[34mSELECT  "pledges".* FROM "pledges" ORDER BY "pledges"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ally-1@jacobson.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Jamel"], ["last_name", "Kertzmann"], ["email", "ally-1@jacobson.co"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:36:09 UTC], ["updated_at", 2016-08-23 18:36:09 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "incubate turn-key channels1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "incubate turn-key channels1"], ["description", "Chuck Norris doesn't pair program."], ["goal", 7166], ["end_date", 2016-10-22 18:36:09 UTC], ["created_at", 2016-08-23 18:36:09 UTC], ["updated_at", 2016-08-23 18:36:09 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"15"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 2.9ms)
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "winona-1@donnelly.net"], ["LIMIT", 1]]
+  [1m[35mSQL (7.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Kendrick"], ["last_name", "Pfannerstill"], ["email", "winona-1@donnelly.net"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:44:29 UTC], ["updated_at", 2016-08-23 18:44:29 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "engineer front-end methodologies1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "engineer front-end methodologies1"], ["description", "There is nothing regular about Chuck Norris' expressions."], ["goal", 78802], ["end_date", 2016-10-22 18:44:29 UTC], ["created_at", 2016-08-23 18:44:29 UTC], ["updated_at", 2016-08-23 18:44:29 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>""}, "campaign_id"=>"16"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/16
+Completed 302 Found in 27ms (ActiveRecord: 2.5ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kane-1@bartoletti.org"], ["LIMIT", 1]]
+  [1m[35mSQL (6.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Creola"], ["last_name", "Graham"], ["email", "kane-1@bartoletti.org"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:47:32 UTC], ["updated_at", 2016-08-23 18:47:32 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "engage visionary paradigms1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "engage visionary paradigms1"], ["description", "Chuck Norris knows the last digit of PI."], ["goal", 88597], ["end_date", 2016-10-22 18:47:32 UTC], ["created_at", 2016-08-23 18:47:32 UTC], ["updated_at", 2016-08-23 18:47:32 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>""}, "campaign_id"=>"17"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (2.5ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/17
+Completed 302 Found in 43ms (ActiveRecord: 6.3ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "astrid.strosin-1@macejkovic.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (6.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Sadye"], ["last_name", "Becker"], ["email", "astrid.strosin-1@macejkovic.biz"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:48:13 UTC], ["updated_at", 2016-08-23 18:48:13 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "recontextualize compelling e-services1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "recontextualize compelling e-services1"], ["description", "Chuck Norris can access private methods."], ["goal", 20747], ["end_date", 2016-10-22 18:48:13 UTC], ["created_at", 2016-08-23 18:48:13 UTC], ["updated_at", 2016-08-23 18:48:13 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>""}, "campaign_id"=>"18"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 48ms (Views: 14.9ms | ActiveRecord: 3.6ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kurt_boyle-1@ebert.info"], ["LIMIT", 1]]
+  [1m[35mSQL (16.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Drake"], ["last_name", "Ritchie"], ["email", "kurt_boyle-1@ebert.info"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 18:54:02 UTC], ["updated_at", 2016-08-23 18:54:02 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "deploy revolutionary paradigms1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "deploy revolutionary paradigms1"], ["description", "Chuck Norris has root access to your system."], ["goal", 91797], ["end_date", 2016-10-22 18:54:02 UTC], ["created_at", 2016-08-23 18:54:02 UTC], ["updated_at", 2016-08-23 18:54:02 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"19"}
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 20], ["user_id", 16], ["campaign_id", 19], ["created_at", 2016-08-23 18:54:02 UTC], ["updated_at", 2016-08-23 18:54:02 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/19
+Completed 302 Found in 35ms (ActiveRecord: 4.3ms)
+  [1m[36mPledge Load (0.3ms)[0m  [1m[34mSELECT  "pledges".* FROM "pledges" ORDER BY "pledges"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "blake.padberg-1@weimann.co"], ["LIMIT", 1]]
+  [1m[35mSQL (6.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Elise"], ["last_name", "Gorczany"], ["email", "blake.padberg-1@weimann.co"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:01:28 UTC], ["updated_at", 2016-08-23 19:01:28 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "innovate killer architectures1"], ["LIMIT", 1]]
+  [1m[35mSQL (5.7ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "innovate killer architectures1"], ["description", "Chuck Norris can access private methods."], ["goal", 5887], ["end_date", 2016-10-22 19:01:28 UTC], ["created_at", 2016-08-23 19:01:28 UTC], ["updated_at", 2016-08-23 19:01:28 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 34], ["user_id", 17], ["campaign_id", 20], ["created_at", 2016-08-23 19:01:28 UTC], ["updated_at", 2016-08-23 19:01:28 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "edyth-1@kling.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Casandra"], ["last_name", "Rutherford"], ["email", "edyth-1@kling.com"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:01:48 UTC], ["updated_at", 2016-08-23 19:01:48 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "cultivate mission-critical action-items1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "cultivate mission-critical action-items1"], ["description", "Chuck Norris can unit test an entire application with a single assert."], ["goal", 993], ["end_date", 2016-10-22 19:01:48 UTC], ["created_at", 2016-08-23 19:01:48 UTC], ["updated_at", 2016-08-23 19:01:48 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 78], ["user_id", 18], ["campaign_id", 21], ["created_at", 2016-08-23 19:01:48 UTC], ["updated_at", 2016-08-23 19:01:48 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#destroy as HTML
+  Parameters: {"id"=>"8", "campaign_id"=>"21"}
+Redirected to http://test.host/
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "grace-1@rohankuhic.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Emilie"], ["last_name", "Gulgowski"], ["email", "grace-1@rohankuhic.biz"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:09:05 UTC], ["updated_at", 2016-08-23 19:09:05 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "zelda_rutherford-2@cruickshank.io"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Madalyn"], ["last_name", "Ernser"], ["email", "zelda_rutherford-2@cruickshank.io"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:09:05 UTC], ["updated_at", 2016-08-23 19:09:05 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "incentivize user-centric communities1"], ["LIMIT", 1]]
+  [1m[35mSQL (6.6ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "incentivize user-centric communities1"], ["description", "Chuck Norris breaks RSA 128-bit encrypted codes in milliseconds."], ["goal", 55453], ["end_date", 2016-10-22 19:09:05 UTC], ["created_at", 2016-08-23 19:09:05 UTC], ["updated_at", 2016-08-23 19:09:05 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 60], ["user_id", 20], ["campaign_id", 22], ["created_at", 2016-08-23 19:09:05 UTC], ["updated_at", 2016-08-23 19:09:05 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "leopold_daniel-1@yost.io"], ["LIMIT", 1]]
+  [1m[35mSQL (6.9ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Colton"], ["last_name", "O'Hara"], ["email", "leopold_daniel-1@yost.io"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:29 UTC], ["updated_at", 2016-08-23 19:10:29 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jee-2@boreradams.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Ayden"], ["last_name", "Bradtke"], ["email", "jee-2@boreradams.net"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:29 UTC], ["updated_at", 2016-08-23 19:10:29 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "benchmark proactive networks1"], ["LIMIT", 1]]
+  [1m[35mSQL (5.7ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "benchmark proactive networks1"], ["description", "Chuck Norris hosting is 101% uptime guaranteed."], ["goal", 27275], ["end_date", 2016-10-22 19:10:29 UTC], ["created_at", 2016-08-23 19:10:29 UTC], ["updated_at", 2016-08-23 19:10:29 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 78], ["user_id", 22], ["campaign_id", 23], ["created_at", 2016-08-23 19:10:29 UTC], ["updated_at", 2016-08-23 19:10:29 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+Processing by PledgesController#destroy as HTML
+  Parameters: {"id"=>"10", "campaign_id"=>"23"}
+  [1m[36mPledge Load (0.3ms)[0m  [1m[34mSELECT  "pledges".* FROM "pledges" WHERE "pledges"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "pledges" WHERE "pledges"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+No template found for PledgesController#destroy, rendering head :no_content
+Completed 204 No Content in 66ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 25ms (Views: 11.5ms | ActiveRecord: 3.8ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#new as HTML
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-12 12:10:47 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-12 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/24
+Completed 302 Found in 20ms (ActiveRecord: 1.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-12 12:10:47 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-12 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/25
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" ORDER BY "campaigns"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"description"=>"hello", "end_date"=>"2016-10-12 12:10:47 -0700", "goal"=>"100000", "title"=>"campaign title"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "campaign title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "campaign title"], ["description", "hello"], ["goal", 100000], ["end_date", 2016-10-12 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/26
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 558ms (Views: 0.7ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#create as HTML
+  Parameters: {"campaign"=>{"title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/new.html.erb within layouts/application
+  Rendered campaigns/new.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "visualize revolutionary mindshare1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "visualize revolutionary mindshare1"], ["description", "No statement can catch the ChuckNorrisException."], ["goal", 1303], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#show as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "seize viral e-tailers2"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "seize viral e-tailers2"], ["description", "Chuck Norris doesn't bug hunt, as that signifies a probability of failure. He goes bug killing."], ["goal", 4051], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#show as HTML
+  Parameters: {"id"=>"28"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Processing by CampaignsController#index as HTML
+  Rendering campaigns/index.html.erb within layouts/application
+  Rendered campaigns/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "redefine revolutionary eyeballs3"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "redefine revolutionary eyeballs3"], ["description", "Chuck Norris burst the dot com bubble."], ["goal", 63006], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "disintermediate innovative niches4"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "disintermediate innovative niches4"], ["description", "Chuck Norris's beard can type 140 wpm."], ["goal", 79461], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#index as HTML
+  Rendering campaigns/index.html.erb within layouts/application
+  Rendered campaigns/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[36mCampaign Load (4.9ms)[0m  [1m[34mSELECT "campaigns".* FROM "campaigns" ORDER BY "campaigns"."created_at" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "disintermediate best-of-breed niches5"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "disintermediate best-of-breed niches5"], ["description", "Chuck Norris's keyboard doesn't have a Ctrl key because nothing controls Chuck Norris."], ["goal", 81243], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+Processing by CampaignsController#destroy as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[31mDELETE FROM "campaigns" WHERE "campaigns"."id" = $1[0m  [["id", 31]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns
+Completed 302 Found in 4ms (ActiveRecord: 1.9ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "campaigns"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "facilitate bricks-and-clicks portals6"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "facilitate bricks-and-clicks portals6"], ["description", "Chuck Norris doesn't have performance bottlenecks. He just makes the universe wait its turn."], ["goal", 21627], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by CampaignsController#destroy as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "campaigns" WHERE "campaigns"."id" = $1[0m  [["id", 32]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "generate magnetic bandwidth7"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "generate magnetic bandwidth7"], ["description", "Chuck Norris can write infinite recursion functions... and have them return."], ["goal", 85570], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"amount"=>"10", "campaign_id"=>"33"}
+Redirected to http://test.host/
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hildegard_osinski-1@grantdickens.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Adelia"], ["last_name", "Frami"], ["email", "hildegard_osinski-1@grantdickens.com"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "iterate virtual web-readiness8"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "iterate virtual web-readiness8"], ["description", "Anonymous methods and anonymous types are really all called Chuck Norris. They just don't like to boast."], ["goal", 77187], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"34"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 20], ["user_id", 23], ["campaign_id", 34], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/34
+Completed 302 Found in 21ms (ActiveRecord: 3.7ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bradley.raynor-2@stantonreichel.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Rodrick"], ["last_name", "Parker"], ["email", "bradley.raynor-2@stantonreichel.net"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "productize e-business initiatives9"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "productize e-business initiatives9"], ["description", "Chuck Norris can use GOTO as much as he wants to. Telling him otherwise is considered harmful."], ["goal", 78375], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"35"}
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 20], ["user_id", 24], ["campaign_id", 35], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/35
+Completed 302 Found in 6ms (ActiveRecord: 1.5ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "carey.osinski-3@baumbach.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Roma"], ["last_name", "McDermott"], ["email", "carey.osinski-3@baumbach.biz"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "reintermediate one-to-one infomediaries10"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "reintermediate one-to-one infomediaries10"], ["description", "There is nothing regular about Chuck Norris' expressions."], ["goal", 9353], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"36"}
+  [1m[36mCampaign Load (0.3ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 20], ["user_id", 25], ["campaign_id", 36], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/36
+Completed 302 Found in 5ms (ActiveRecord: 1.3ms)
+  [1m[36mPledge Load (0.2ms)[0m  [1m[34mSELECT  "pledges".* FROM "pledges" ORDER BY "pledges"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jaunita-4@greenholthilll.io"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Karley"], ["last_name", "Prohaska"], ["email", "jaunita-4@greenholthilll.io"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "strategize strategic markets11"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "strategize strategic markets11"], ["description", "Chuck Norris can write multi-threaded applications with a single thread."], ["goal", 1603], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>"20"}, "campaign_id"=>"37"}
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 20], ["user_id", 26], ["campaign_id", 37], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/campaigns/37
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+  [1m[36mPledge Load (0.2ms)[0m  [1m[34mSELECT  "pledges".* FROM "pledges" ORDER BY "pledges"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "roxane-5@haag.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Benny"], ["last_name", "Breitenberg"], ["email", "roxane-5@haag.info"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "optimize transparent convergence12"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "optimize transparent convergence12"], ["description", "Chuck Norris's first program was kill -9."], ["goal", 91601], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>""}, "campaign_id"=>"38"}
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "norberto-6@wisozk.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Michel"], ["last_name", "Ferry"], ["email", "norberto-6@wisozk.com"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "reinvent global architectures13"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "reinvent global architectures13"], ["description", "Chuck Norris doesn't need a debugger, he just stares down the bug until the code confesses."], ["goal", 47824], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#create as HTML
+  Parameters: {"pledge"=>{"amount"=>""}, "campaign_id"=>"39"}
+  [1m[36mCampaign Load (0.2ms)[0m  [1m[34mSELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering campaigns/show.html.erb within layouts/application
+  Rendered campaigns/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "isaac_kilback-7@mantemckenzie.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "May"], ["last_name", "Kessler"], ["email", "isaac_kilback-7@mantemckenzie.info"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "unleash best-of-breed web services14"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "unleash best-of-breed web services14"], ["description", "Chuck Norris's first program was kill -9."], ["goal", 91754], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 57], ["user_id", 29], ["campaign_id", 40], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PledgesController#destroy as HTML
+  Parameters: {"id"=>"15", "campaign_id"=>"40"}
+Redirected to http://test.host/
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "thaddeus-8@kohler.io"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Gunner"], ["last_name", "Lehner"], ["email", "thaddeus-8@kohler.io"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jaime-9@mayert.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Angelina"], ["last_name", "Romaguera"], ["email", "jaime-9@mayert.name"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "scale extensible methodologies15"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "scale extensible methodologies15"], ["description", "Chuck Norris doesn't believe in floating point numbers because they can't be typed on his binary keyboard."], ["goal", 97029], ["end_date", 2016-10-22 19:10:47 UTC], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pledges" ("amount", "user_id", "campaign_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 47], ["user_id", 31], ["campaign_id", 41], ["created_at", 2016-08-23 19:10:47 UTC], ["updated_at", 2016-08-23 19:10:47 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+Processing by PledgesController#destroy as HTML
+  Parameters: {"id"=>"16", "campaign_id"=>"41"}
+  [1m[36mPledge Load (0.2ms)[0m  [1m[34mSELECT  "pledges".* FROM "pledges" WHERE "pledges"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "pledges" WHERE "pledges"."id" = $1[0m  [["id", 16]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+No template found for PledgesController#destroy, rendering head :no_content
+Completed 204 No Content in 62ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pledges"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCampaign Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campaigns" ("title", "description", "goal", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "valid title"], ["description", "abc"], ["goal", 123], ["end_date", 2016-10-22 19:10:48 UTC], ["created_at", 2016-08-23 19:10:48 UTC], ["updated_at", 2016-08-23 19:10:48 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCampaign Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "campaigns" WHERE "campaigns"."title" = $1 LIMIT $2[0m  [["title", "valid title"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "juliet-11@gutmann.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Jerel"], ["last_name", "Bechtelar"], ["email", "juliet-11@gutmann.com"], ["password_digest", "hellowrold"], ["created_at", 2016-08-23 19:10:48 UTC], ["updated_at", 2016-08-23 19:10:48 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "juliet-11@gutmann.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "silas_dickens-13@mayert.org"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m

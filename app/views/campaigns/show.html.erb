@@ -1,0 +1,57 @@
+<h1><%= @campaign.title %></h1>
+<p>
+  <%= @campaign.description %>
+</p>
+<div style="width: 800px;">
+  <div id="map" style="width: 800px; height: 400px;"></div>
+</div>
+<% if @campaign.draft? %>
+  <div class="label label-info">
+    draft
+  </div>
+  <%= link_to "Publish", campaign_publishings_path(@campaign),
+                         class: "btn btn-priamary btn-sm",
+                         method: :post,
+                         data: { confirm: "Are you sure you want to publish?"}
+                         %>
+<% end %>
+
+<div class="clearfix">
+<h3>Pledge</h3>
+<%= simple_form_for [@campaign, @pledge] do |f| %>
+<%= f.input :amount %>
+<%= f.submit "Commit", class: "btn btn-primary" %>
+<% end %>
+</div>
+<script>
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      "lat": <%= @campaign.latitude %>,
+      "lng": <%= @campaign.longitude %>,
+      // "picture": {
+      //   "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+      //   "width":  32,
+      //   "height": 32
+      // },
+      "infowindow": "<%= @campaign.title %>"
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  handler.getMap().setZoom(17);
+});
+</script>
+
+<div class="clearfix"></div>
+
+<% @campaign.rewards.each do |reward| %>
+  <div class="well col-md-4">
+    <h3><%= reward.title %></h3>
+    <p>
+      <%= reward.body %>
+    </p>
+    <%= number_to_currency(reward.amount) %>
+  </div>
+<% end %>
